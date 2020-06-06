@@ -14,5 +14,5 @@ for database in $dbs
 do
   mysqldump -u root $database | gzip > $backup_folder$date\_$database.sql.gz
   # keep only x files
-  ls -1t /srv/backup/mysql/*$database.sql.gz | tail -n +$((count+1)) | xargs rm -f
+  ls -1t $backup_folder*$database.sql.gz | tail -n +$((count+1)) | xargs rm -f
 done
