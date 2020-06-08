@@ -10,9 +10,9 @@ count="3"
 test -d $backup_folder || mkdir -p $backup_folder
 
 # dump all databases
-for database in $dbs
+for db in $dbs
 do
-  pg_dump -U postgres $database | gzip > $backup_folder$date\_$database.sql.gz
+  pg_dump -U postgres $db | gzip > $backup_folder$date\_$db.sql.gz
   # keep only x files
-  ls -1t $backup_folder*$database.sql.gz | tail -n +$((count+1)) | xargs rm -f
+  ls -1t $backup_folder*$db.sql.gz | tail -n +$((count+1)) | xargs rm -f
 done
