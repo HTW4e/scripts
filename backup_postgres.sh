@@ -1,5 +1,20 @@
 #!/bin/bash
 
+###############################################################################################################
+# Description: backup all postgresql dbs on host
+# Author: HTW4e
+# Version: 1.0
+# Script Name: backup_postgres.sh
+###############################################################################################################
+# Copyright (c) HTW4e <htw4e@htw4e.li>
+
+# This software is licensed to you under the GNU General Public License.
+# There is NO WARRANTY for this software, express or
+# implied, including the implied warranties of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. You should have received a copy of GPLv2
+# along with this software; if not, see
+# http://www.gnu.org/licenses/gpl.txt
+
 # vars
 dbs=$(psql -U postgres template1 -c "\l" | tail -n+4 | cut -d'|' -f 1 | sed -e '/^ *$/d' | sed -e '$d' | egrep -v 'postgres|template')
 date=$(date +%Y%m%d_%H%M)
